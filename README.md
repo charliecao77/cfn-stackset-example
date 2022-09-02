@@ -2,7 +2,7 @@
 
 account A: 
 - administration role: cfn-admin-role
-```
+```TrustRule
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -18,7 +18,7 @@ account A:
 }
 ```
 
-```
+```Custom Policy
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -32,12 +32,12 @@ account A:
     ]
 }
 
-``
+```
 
 
 account B:
 - execution role: cfn-instance-role
-```
+```TrustRule
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -61,7 +61,7 @@ account B:
 }
 ```
 
-```
+```AWS Policy
 arn:aws:iam::aws:policy/AmazonS3FullAccess
 
 arn:aws:iam::aws:policy/AmazonSNSFullAccess
@@ -72,7 +72,7 @@ arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
 
 ## Create the StackeSet and Stack Instance with creation an S3 bucket
 
-```
+```bash
 aws --profile 2022 --region us-east-1 \
  cloudformation create-stack-set \
     --stack-set-name cfn-create-s3 \
